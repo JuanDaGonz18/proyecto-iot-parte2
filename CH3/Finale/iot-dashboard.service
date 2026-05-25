@@ -1,0 +1,16 @@
+[Unit]
+Description=IoT Air Quality Dashboard (Flask Web Server with AI)
+After=network.target iot-bridge.service
+Wants=iot-bridge.service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/iot-challenge3
+Environment="PATH=/home/pi/iot-challenge3/venv/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/home/pi/iot-challenge3/venv/bin/python3 /home/pi/iot-challenge3/dashboard.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
